@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoTwin — Digital Twin of Wildlife Habitats | AIoT &amp; Edge Intelligence</title>
+    <meta name="description" content="EcoTwin is a full-stack AIoT Digital Twin system for real-time wildlife habitat monitoring, ML suitability prediction, anomaly detection and LSTM forecasting.">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+
+    <!-- ===== SIDEBAR NAVBAR ===== -->
+    <div class="sidebar">
+        <div class="brand">
+            <div class="brand-logo">ET</div>
+            <div class="brand-title">EcoTwin AIoT</div>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="/dashboard?page=home" class="nav-link {% if active_page == 'home' %}active{% endif %}"><i class="fa-solid fa-house"></i> Home Overview</a></li>
+            <li><a href="/dashboard?page=live" class="nav-link {% if active_page == 'live' %}active{% endif %}"><i class="fa-solid fa-tower-broadcast"></i> Live Telemetry</a></li>
+            <li><a href="/dashboard?page=twin" class="nav-link {% if active_page == 'twin' %}active{% endif %}"><i class="fa-solid fa-cubes"></i> Digital Twin Engine</a></li>
+            <li><a href="/dashboard?page=predictions" class="nav-link {% if active_page == 'predictions' %}active{% endif %}"><i class="fa-solid fa-chart-line"></i> Suitability ML</a></li>
+            <li><a href="/dashboard?page=forecast" class="nav-link {% if active_page == 'forecast' %}active{% endif %}"><i class="fa-solid fa-clock-rotate-left"></i> LSTM Forecast</a></li>
+            <li><a href="/dashboard?page=simulation" class="nav-link {% if active_page == 'simulation' %}active{% endif %}"><i class="fa-solid fa-sliders"></i> What-If Simulation</a></li>
+            <li><a href="/dashboard?page=map" class="nav-link {% if active_page == 'map' %}active{% endif %}"><i class="fa-solid fa-map-location-dot"></i> GIS Habitat Map</a></li>
+            <li><a href="/dashboard?page=alerts" class="nav-link {% if active_page == 'alerts' %}active{% endif %}"><i class="fa-solid fa-triangle-exclamation"></i> Edge Anomaly Alerts</a></li>
+            <li><a href="/dashboard?page=analytics" class="nav-link {% if active_page == 'analytics' %}active{% endif %}"><i class="fa-solid fa-chart-pie"></i> Habitat Analytics</a></li>
+            <li><a href="/dashboard?page=hardware" class="nav-link {% if active_page == 'hardware' %}active{% endif %}"><i class="fa-solid fa-microchip"></i> Hardware Architecture</a></li>
+            <li><a href="/dashboard?page=change_detection" class="nav-link {% if active_page == 'change_detection' %}active{% endif %}"><i class="fa-solid fa-satellite"></i> Change Detection</a></li>
+            <li><a href="/dashboard?page=wildlife_vision" class="nav-link {% if active_page == 'wildlife_vision' %}active{% endif %}"><i class="fa-solid fa-paw"></i> Wildlife Vision</a></li>
+            <li><a href="/dashboard?page=system_health" class="nav-link {% if active_page == 'system_health' %}active{% endif %}"><i class="fa-solid fa-heart-pulse"></i> System Health</a></li>
+        </ul>
+    </div>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <div class="main-wrapper">
+        <div class="header">
+            <div class="header-title">
+                <h1>EcoTwin: Digital Twin of Wildlife Habitats</h1>
+                <p>AIoT &amp; Edge Intelligence — Real-Time Monitoring, ML Inference &amp; Simulation</p>
+            </div>
+            <div class="status-badge">
+                <div class="status-dot"></div>
+                Digital Twin Synchronized
+            </div>
+        </div>
+
+        <!-- ===== HOME / LIVE TELEMETRY ===== -->
+        {% if active_page == 'home' or active_page == 'live' %}
+        <div class="grid-4">
+            <div class="card">
+                <div class="card-title">Temperature <i class="fa-solid fa-temperature-high" style="color:#ef4444;"></i></div>
+                <div class="card-value" id="val-temp">-- °C</div>
+            </div>
+            <div class="card">
+                <div class="card-title">Humidity <i class="fa-solid fa-droplet" style="color:#38bdf8;"></i></div>
+                <div class="card-value" id="val-hum">-- %</div>
+            </div>
+            <div class="card">
+                <div class="card-title">Soil Moisture <i class="fa-solid fa-seedling" style="color:#10b981;"></i></div>
+                <div class="card-value" id="val-soil">-- %</div>
+            </div>
+            <div class="card">
+                <div class="card-title">Rainfall <i class="fa-solid fa-cloud-showers-heavy" style="color:#a855f7;"></i></div>
+                <div class="card-value" id="val-rain">-- mm</div>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-title">Live Environmental Trends</div>
+                <div style="height:280px;"><canvas id="historyChart"></canvas></div>
+            </div>
+            <div class="card">
+                <div class="card-title">AI Inferences &amp; Digital Twin Status</div>
+                <div style="display:flex;flex-direction:column;gap:16px;margin-top:12px;">
+                    <div>
+                        <span style="color:var(--text-muted);font-size:0.85rem;">Habitat Suitability (Random Forest / XGBoost):</span>
+                        <h3 id="val-habitat-status" style="color:var(--primary);margin-top:4px;">Evaluating...</h3>
+                        <p style="font-size:0.8rem;color:var(--text-muted);">Confidence: <span id="val-habitat-conf">--</span> | Animal Presence Prob: <span id="val-animal-prob">--</span></p>
+                    </div>
+                    <hr style="border-color:var(--border-color);">
+                    <div>
+                        <span style="color:var(--text-muted);font-size:0.85rem;">Edge Anomaly &amp; Habitat Stress (Isolation Forest):</span>
+                        <h3 id="val-anomaly-status" style="color:var(--accent);margin-top:4px;">Evaluating...</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% if active_page == 'home' %}
+        <!-- Architecture Diagram on Home -->
+        <div class="card" style="margin-top:0;">
+            <div class="card-title"><i class="fa-solid fa-diagram-project" style="color:var(--accent);margin-right:8px;"></i>Project Architecture Overview</div>
+            <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:20px;">EcoTwin end-to-end data flow: physical sensor layer → edge inference → digital twin engine → ML predictions → frontend dashboard.</p>
+            <div class="arch-diagram">
+                <div class="arch-node arch-sensor"><i class="fa-solid fa-microchip"></i><span>ESP32 Sensor Nodes</span><small>Temp / Humidity / Soil / PIR / Acoustic</small></div>
+                <div class="arch-arrow">→</div>
+                <div class="arch-node arch-edge"><i class="fa-solid fa-server"></i><span>Edge Gateway</span><small>Raspberry Pi 4 · Isolation Forest · MQTT</small></div>
+                <div class="arch-arrow">→</div>
+                <div class="arch-node arch-twin"><i class="fa-solid fa-cubes"></i><span>Digital Twin Engine</span><small>4-State Manager · SQLite · REST API</small></div>
+                <div class="arch-arrow">→</div>
+                <div class="arch-node arch-ml"><i class="fa-solid fa-brain"></i><span>ML Inference Layer</span><small>Random Forest · XGBoost · LSTM · CLIP</small></div>
+                <div class="arch-arrow">→</div>
+                <div class="arch-node arch-dash"><i class="fa-solid fa-display"></i><span>Dashboard</span><small>Flask · Chart.js · Leaflet GIS</small></div>
+            </div>
+        </div>
+        {% endif %}
+        {% endif %}
+
+        <!-- ===== DIGITAL TWIN ENGINE ===== -->
+        {% if active_page == 'twin' %}
+        <div class="card" style="margin-bottom:24px;">
+            <div class="card-title">Digital Twin 4-State Architectural Snapshot</div>
+            <p style="color:var(--text-muted);font-size:0.9rem;">Continuously maintaining synchronized Current, Historical, Predicted Future, and Simulated states.</p>
+            <div class="grid-2" style="margin-top:20px;">
+                <div class="card" style="background:rgba(0,0,0,0.2);">
+                    <h4 style="color:var(--primary);">1. Current State</h4>
+                    <p style="margin-top:8px;font-size:0.85rem;color:var(--text-muted);">Synchronized at: <span id="twin-sync-time">--</span></p>
+                    <p style="font-size:0.85rem;margin-top:6px;">Live sensor telemetry streams ingested continuously into SQLite &amp; in-memory state manager.</p>
+                </div>
+                <div class="card" style="background:rgba(0,0,0,0.2);">
+                    <h4 style="color:var(--accent);">2. Historical State</h4>
+                    <p style="margin-top:8px;font-size:0.85rem;color:var(--text-muted);">Time-series telemetry buffer.</p>
+                    <p style="font-size:0.85rem;margin-top:6px;">Maintains 2,500+ historical observations for feature engineering &amp; model retraining.</p>
+                </div>
+                <div class="card" style="background:rgba(0,0,0,0.2);">
+                    <h4 style="color:var(--warning);">3. Predicted Future State</h4>
+                    <p style="margin-top:8px;font-size:0.85rem;color:var(--text-muted);">Multi-Horizon LSTM Neural Network.</p>
+                    <p style="font-size:0.85rem;margin-top:6px;">Forecasts temperature, humidity &amp; moisture 3h / 12h / 24h ahead.</p>
+                </div>
+                <div class="card" style="background:rgba(0,0,0,0.2);">
+                    <h4 style="color:#a855f7;">4. Simulated ("What-If") State</h4>
+                    <p style="margin-top:8px;font-size:0.85rem;color:var(--text-muted);">Scenario Engine.</p>
+                    <p style="font-size:0.85rem;margin-top:6px;">Evaluates counterfactual environmental shifts (e.g. -30% rainfall) on habitat health.</p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- ===== SUITABILITY ML ===== -->
+        {% if active_page == 'predictions' %}
+        <div class="sim-badge">⚡ LIVE — Real Random Forest &amp; XGBoost inference on ecotwin.db readings</div>
+
+        <div class="grid-4" style="margin-bottom:24px;">
+            <div class="card kpi-card">
+                <div class="card-title">RF Accuracy</div>
+                <div class="card-value kpi-green" id="rf-accuracy">--</div>
+            </div>
+            <div class="card kpi-card">
+                <div class="card-title">XGB Accuracy</div>
+                <div class="card-value kpi-blue" id="xgb-accuracy">--</div>
+            </div>
+            <div class="card kpi-card">
+                <div class="card-title">Model Agreement</div>
+                <div class="card-value kpi-yellow" id="model-agreement">--</div>
+            </div>
+            <div class="card kpi-card">
+                <div class="card-title">Rows Evaluated</div>
+                <div class="card-value" id="rows-evaluated">--</div>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-title">Feature Importance — Random Forest</div>
+                <div style="height:260px;"><canvas id="featureImportanceChart"></canvas></div>
+            </div>
+            <div class="card">
+                <div class="card-title">RF vs XGBoost Confidence Comparison</div>
+                <div style="height:260px;"><canvas id="modelCompareChart"></canvas></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Last 20 Predictions — RF vs XGBoost</div>
+            <div class="table-container">
+                <table id="predictions-table">
+                    <thead><tr>
+                        <th>Timestamp</th><th>Temp °C</th><th>Humidity %</th><th>Soil %</th>
+                        <th>RF Prediction</th><th>RF Conf %</th><th>XGB Prediction</th><th>XGB Conf %</th><th>Agree</th>
+                    </tr></thead>
+                    <tbody id="predictions-tbody"></tbody>
+                </table>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- ===== EDGE ANOMALY ALERTS ===== -->
+        {% if active_page == 'alerts' %}
+        <div class="sim-badge">⚡ LIVE — Isolation Forest anomaly detection on latest 100 DB records</div>
+
+        <div class="grid-4" style="margin-bottom:24px;">
+            <div class="card kpi-card">
+                <div class="card-title">Total Anomalies Found</div>
+                <div class="card-value kpi-red" id="alert-total">--</div>
+            </div>
+            <div class="card kpi-card">
+                <div class="card-title">HIGH Severity</div>
+                <div class="card-value kpi-red" id="alert-high">--</div>
+            </div>
+            <div class="card kpi-card">
+                <div class="card-title">MEDIUM Severity</div>
+                <div class="card-value kpi-yellow" id="alert-medium">--</div>
+            </div>
+            <div class="card kpi-card">
+                <div class="card-title">LOW Severity</div>
+                <div class="card-value kpi-green" id="alert-low">--</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Anomaly Event Log — Chronological (Isolation Forest detections)</div>
+            <div class="table-container">
+                <table id="anomaly-table">
+                    <thead><tr>
+                        <th>Timestamp</th><th>Severity</th><th>Temp °C</th><th>Humidity %</th><th>Soil %</th><th>Acoustic dB</th><th>Trigger Reason</th>
+                    </tr></thead>
+                    <tbody id="anomaly-tbody"><tr><td colspan="7" style="color:var(--text-muted);text-align:center;padding:24px;">Loading anomaly events…</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- ===== HABITAT ANALYTICS ===== -->
+        {% if active_page == 'analytics' %}
+        <div class="sim-badge">⚡ LIVE — Computed from all historical sensor_data in ecotwin.db</div>
+
+        <div class="grid-4" id="analytics-summary-cards" style="margin-bottom:24px;"></div>
+
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-title">Daily Average Trends (Last 14 Days)</div>
+                <div style="height:280px;"><canvas id="dailyTrendsChart"></canvas></div>
+            </div>
+            <div class="card">
+                <div class="card-title">Hourly Temperature &amp; Humidity Heatmap (24h Pattern)</div>
+                <div style="height:280px;"><canvas id="hourlyHeatmapChart"></canvas></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Soil Moisture by Hour of Day</div>
+            <div style="height:220px;"><canvas id="soilHourlyChart"></canvas></div>
+        </div>
+        {% endif %}
+
+        <!-- ===== WHAT-IF SIMULATION ===== -->
+        {% if active_page == 'simulation' %}
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-title">Digital Twin "What-If" Counterfactual Simulation Engine</div>
+                <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:20px;">Adjust environmental variables to observe predicted impacts on habitat suitability, animal presence, and stress indicators.</p>
+                <div class="form-group">
+                    <label class="form-label">Rainfall Shift (%)</label>
+                    <input type="range" id="sim-rain" class="slider-input" min="-80" max="80" value="-30" oninput="this.nextElementSibling.value = this.value + '%'">
+                    <output style="font-weight:700;color:var(--accent);"> -30%</output>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Temperature Shift (%)</label>
+                    <input type="range" id="sim-temp" class="slider-input" min="-50" max="50" value="15" oninput="this.nextElementSibling.value = this.value + '%'">
+                    <output style="font-weight:700;color:var(--accent);"> +15%</output>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Humidity Shift (%)</label>
+                    <input type="range" id="sim-hum" class="slider-input" min="-50" max="50" value="-20" oninput="this.nextElementSibling.value = this.value + '%'">
+                    <output style="font-weight:700;color:var(--accent);"> -20%</output>
+                </div>
+                <button class="btn-primary" onclick="runSimulation()">Execute Scenario Simulation</button>
+            </div>
+            <div class="card">
+                <div class="card-title">Simulation Output &amp; Risk Assessment</div>
+                <div id="sim-result-container" style="margin-top:16px;">
+                    <p style="color:var(--text-muted);font-size:0.9rem;">Click 'Execute Scenario Simulation' to run counterfactual predictions through the Digital Twin state engine.</p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- ===== GIS MAP ===== -->
+        {% if active_page == 'map' %}
+        <div class="card">
+            <div class="card-title">GIS Geographical Habitat Visualization &amp; Sensor Node Deployment</div>
+            <div id="map"></div>
+        </div>
+        {% endif %}
+
+        <!-- ===== LSTM FORECAST ===== -->
+        {% if active_page == 'forecast' %}
+        <div class="card">
+            <div class="card-title">LSTM Time-Series Forecasting (3h / 12h / 24h Horizons)</div>
+            <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:16px;">Predicting future environmental parameters using deep learning sequence windowing.</p>
+            <div class="grid-4">
+                <div class="card" style="background:rgba(0,0,0,0.2);">
+                    <span style="color:var(--text-muted);font-size:0.8rem;">Horizon: 3 Hours Ahead</span>
+                    <h4 style="margin-top:8px;color:var(--accent);" id="fc-temp-3h">Temp: -- °C</h4>
+                    <p style="font-size:0.8rem;color:var(--text-muted);" id="fc-extra-3h">Loading…</p>
+                </div>
+                <div class="card" style="background:rgba(0,0,0,0.2);">
+                    <span style="color:var(--text-muted);font-size:0.8rem;">Horizon: 12 Hours Ahead</span>
+                    <h4 style="margin-top:8px;color:var(--warning);" id="fc-temp-12h">Temp: -- °C</h4>
+                    <p style="font-size:0.8rem;color:var(--text-muted);" id="fc-extra-12h">Loading…</p>
+                </div>
+                <div class="card" style="background:rgba(0,0,0,0.2);">
+                    <span style="color:var(--text-muted);font-size:0.8rem;">Horizon: 24 Hours Ahead</span>
+                    <h4 style="margin-top:8px;color:var(--primary);" id="fc-temp-24h">Temp: -- °C</h4>
+                    <p style="font-size:0.8rem;color:var(--text-muted);" id="fc-extra-24h">Loading…</p>
+                </div>
+            </div>
+            <div style="margin-top:24px;height:300px;"><canvas id="forecastChart"></canvas></div>
+        </div>
+        {% endif %}
+
+        <!-- ===== HARDWARE ARCHITECTURE (PART B) ===== -->
+        {% if active_page == 'hardware' %}
+        <div class="sim-badge">⚙️ SIMULATED — Deployment-ready architecture. Data derived from simulated sensor telemetry, not live hardware.</div>
+        <div class="card" style="margin-bottom:24px;">
+            <div class="card-title"><i class="fa-solid fa-server" style="color:var(--accent);margin-right:8px;"></i>Edge Gateway — Raspberry Pi 4</div>
+            <div class="grid-2" style="margin-top:16px;">
+                <div>
+                    <table style="margin-top:0;">
+                        <tbody id="gateway-tbody">
+                            <tr><td style="color:var(--text-muted);">Device</td><td>Raspberry Pi 4 (4GB RAM)</td></tr>
+                            <tr><td style="color:var(--text-muted);">Role</td><td>Edge AI Inference + MQTT Broker</td></tr>
+                            <tr><td style="color:var(--text-muted);">ML Model</td><td>Isolation Forest (edge_runner.py)</td></tr>
+                            <tr><td style="color:var(--text-muted);">MQTT</td><td>Mosquitto @ localhost:1883</td></tr>
+                            <tr><td style="color:var(--text-muted);">Status</td><td><span style="color:var(--primary);">● Simulated Online</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <div class="card" style="background:rgba(16,185,129,0.06);border-color:rgba(16,185,129,0.25);">
+                        <p style="font-size:0.85rem;line-height:1.6;">The Raspberry Pi 4 acts as the edge computing hub. It runs the <strong>Isolation Forest</strong> model locally (<code>edge/edge_runner.py</code>), detects anomalies before data reaches the cloud, and caches telemetry offline when connectivity drops. Data is forwarded to the Flask backend via REST or MQTT.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-title" style="margin-bottom:16px;padding:0 4px;">Sensor Node Fleet — ESP32 Deployment Nodes</div>
+        <div id="hardware-nodes-grid" class="grid-4"></div>
+
+        <div class="card" style="margin-top:24px;">
+            <div class="card-title">End-to-End Data Flow Diagram</div>
+            <div class="arch-diagram arch-hardware">
+                <div class="arch-node arch-sensor"><i class="fa-solid fa-microchip"></i><span>ESP32 Nodes</span><small>Sensors → MQTT Publish</small></div>
+                <div class="arch-arrow">→</div>
+                <div class="arch-node arch-edge"><i class="fa-solid fa-server"></i><span>RPi 4 Edge</span><small>MQTT Subscribe → IF inference</small></div>
+                <div class="arch-arrow">→</div>
+                <div class="arch-node arch-twin"><i class="fa-solid fa-database"></i><span>SQLite + Twin</span><small>Persist + sync twin state</small></div>
+                <div class="arch-arrow">→</div>
+                <div class="arch-node arch-ml"><i class="fa-solid fa-brain"></i><span>Flask + ML</span><small>RF / XGBoost / LSTM</small></div>
+                <div class="arch-arrow">→</div>
+                <div class="arch-node arch-dash"><i class="fa-solid fa-display"></i><span>Dashboard</span><small>Chart.js + Leaflet</small></div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- ===== HABITAT CHANGE DETECTION (PART C) ===== -->
+        {% if active_page == 'change_detection' %}
+        <div class="sim-badge">🛰️ SIMULATED DEMO — OpenCV pixel-difference engine on synthetic aerial imagery. Not a live satellite feed.</div>
+
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-title">Upload Before / After Images (optional)</div>
+                <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:16px;">Upload real before &amp; after aerial images, or click "Run with Sample Images" to use generated synthetic forest imagery.</p>
+                <div class="form-group">
+                    <label class="form-label">Before Image</label>
+                    <input type="file" id="before-img-input" accept="image/*" style="color:var(--text-main);">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">After Image</label>
+                    <input type="file" id="after-img-input" accept="image/*" style="color:var(--text-main);">
+                </div>
+                <div style="display:flex;gap:12px;margin-top:8px;">
+                    <button class="btn-primary" onclick="runChangeDetection(false)" style="flex:1;">Analyze Uploaded Images</button>
+                    <button class="btn-secondary" onclick="runChangeDetection(true)" style="flex:1;">Run with Sample Images</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Detection Results</div>
+                <div id="change-result" style="padding:12px;color:var(--text-muted);">Click a button to run change detection analysis.</div>
+            </div>
+        </div>
+
+        <div class="grid-2" style="margin-top:0;" id="change-images-row" style="display:none;">
+            <div class="card" id="change-before-card" style="display:none;">
+                <div class="card-title">Before Image</div>
+                <img id="change-before-img" src="" alt="Before" style="width:100%;border-radius:8px;margin-top:8px;">
+            </div>
+            <div class="card" id="change-diff-card" style="display:none;">
+                <div class="card-title">Change Heatmap (Difference Image)</div>
+                <img id="change-diff-img" src="" alt="Difference" style="width:100%;border-radius:8px;margin-top:8px;">
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- ===== WILDLIFE VISION (PART D) ===== -->
+        {% if active_page == 'wildlife_vision' %}
+        <div class="sim-badge">🦁 DEMO — CLIP zero-shot image classification. Simulated camera-trap sightings. NOT a live camera feed.</div>
+
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-title"><i class="fa-solid fa-camera" style="color:var(--accent);margin-right:6px;"></i>Wildlife Image Classifier (CLIP)</div>
+                <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:16px;">Upload a wildlife image or use a sample. CLIP classifies the species using zero-shot inference.</p>
+                <div class="form-group">
+                    <label class="form-label">Upload Image</label>
+                    <input type="file" id="wildlife-img-input" accept="image/*" style="color:var(--text-main);">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Or choose sample animal</label>
+                    <select id="sample-species-select" style="width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border-color);color:var(--text-main);padding:8px;border-radius:8px;">
+                        <option value="leopard">Leopard</option>
+                        <option value="bird" selected>Wild Bird</option>
+                        <option value="bear">Brown Bear</option>
+                        <option value="deer">Deer</option>
+                        <option value="rodent">Rodent</option>
+                    </select>
+                </div>
+                <div style="display:flex;gap:12px;margin-top:8px;">
+                    <button class="btn-primary" onclick="classifyWildlife(false)" style="flex:1;">Classify Uploaded</button>
+                    <button class="btn-secondary" onclick="classifyWildlife(true)" style="flex:1;">Use Sample Image</button>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">Classification Result</div>
+                <div id="wildlife-result" style="padding:12px;color:var(--text-muted);">Upload an image or select a sample to classify.</div>
+                <div style="height:220px;margin-top:12px;"><canvas id="wildlifeChart"></canvas></div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top:0;">
+            <div class="card-title"><i class="fa-solid fa-map-pin" style="color:var(--warning);margin-right:6px;"></i>Simulated Camera-Trap Sighting Events</div>
+            <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:12px;">Randomly generated detections from virtual camera-trap nodes — for demonstration of GIS integration.</p>
+            <div style="display:flex;justify-content:flex-end;margin-bottom:12px;">
+                <button class="btn-secondary" onclick="loadCameraTraps()">Refresh Sightings</button>
+            </div>
+            <div class="table-container">
+                <table id="traps-table">
+                    <thead><tr><th>Sighting ID</th><th>Camera Node</th><th>Zone</th><th>Species</th><th>Confidence</th><th>Timestamp</th></tr></thead>
+                    <tbody id="traps-tbody"><tr><td colspan="6" style="text-align:center;color:var(--text-muted);padding:24px;">Click "Refresh Sightings"</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- ===== SYSTEM HEALTH ===== -->
+        {% if active_page == 'system_health' %}
+        <div class="grid-4" id="health-cards" style="margin-bottom:24px;"></div>
+        <div class="card">
+            <div class="card-title">Trained Model Registry</div>
+            <div class="table-container">
+                <table><thead><tr><th>Model</th><th>Status</th></tr></thead>
+                <tbody id="models-tbody"></tbody></table>
+            </div>
+        </div>
+        {% endif %}
+
+    </div><!-- end main-wrapper -->
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/map.js') }}"></script>
+</body>
+</html>

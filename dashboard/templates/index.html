@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>EcoTwin Dashboard</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<div class="navbar">
+
+    <h1>
+        EcoTwin: Wildlife Habitat Digital Twin
+    </h1>
+
+</div>
+
+
+
+<div class="container">
+
+
+    <div class="cards">
+
+
+        <div class="card">
+
+            <h3>
+                Temperature
+            </h3>
+
+            <p id="temperature">
+                Loading...
+            </p>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <h3>
+                Humidity
+            </h3>
+
+            <p id="humidity">
+                Loading...
+            </p>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <h3>
+                Animal Activity
+            </h3>
+
+            <p id="animal">
+                Loading...
+            </p>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <h3>
+                Habitat Prediction
+            </h3>
+
+            <p id="habitat">
+                Loading...
+            </p>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <h3>
+                Prediction Confidence
+            </h3>
+
+            <p id="confidence">
+                Loading...
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <div class="chart-container">
+
+        <h2>
+            Environmental Trends
+        </h2>
+
+<h1>TEST ECOTWIN FILE</h1>
+        <canvas id="environmentChart"></canvas>
+
+
+    </div>
+
+
+
+
+
+
+   <div class="alert-box">
+
+    <h2>
+        AI Habitat Alert
+    </h2>
+
+
+    <p id="alert">
+        Checking habitat status...
+    </p>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+
+
+</body>
+
+</html>

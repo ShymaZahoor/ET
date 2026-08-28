@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: ecotwin-digital-twin
+    env: python
+    buildCommand: |
+      pip install -r requirements.txt gunicorn
+      python iot/data_generator.py
+      python habitat_prediction/train_habitat.py
+      python anomaly_detection/train_anomaly.py
+      python forecasting/train_forecast.py
+    startCommand: gunicorn backend.app:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0

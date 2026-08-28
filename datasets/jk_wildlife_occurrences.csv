@@ -1,0 +1,154 @@
+gbif_id,scientific_name,generic_name,specific_epithet,latitude,longitude,event_date,country,state_province,locality,coordinate_uncertainty_m,basis_of_record,target_habitat,common_name
+6422976858,Cervus hanglu,Cervus,hanglu,34.095248,74.942993,2026-06-29T07:26:51,India,Jammu and Kashmir,"Jammu and Kashmir, IN",28874.0,HUMAN_OBSERVATION,Dachigam National Park,Kashmir Stag / Hangul
+3383947235,Cervus hanglu,Cervus,hanglu,34.092357,74.971943,2021-01-26T15:59:35,India,Jammu and Kashmir,"Jammu and Kashmir, IN",28874.0,HUMAN_OBSERVATION,Dachigam National Park,Kashmir Stag / Hangul
+3466031379,Cervus hanglu,Cervus,hanglu,34.030763,74.842546,2016-05-05T12:31Z,India,Jammu and Kashmir,"Jammu and Kashmir, IN",28874.0,HUMAN_OBSERVATION,Dachigam National Park,Kashmir Stag / Hangul
+5938075278,Anser anser,Anser,anser,22.914714,71.973683,2026-01-02T16:28:06,India,Gujarat,"Moti Kathechi, Gujarat, India",,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+5938677098,Anser anser,Anser,anser,22.917098,71.973284,2026-01-02T16:24,India,Gujarat,"Vadla, Gujarat, India",15.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+6131143466,Anser anser,Anser,anser,28.512698,77.484186,2026-01-25T10:36,India,Uttar Pradesh,"Surajpur, Greater Noida, Uttar Pradesh, India",6193.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+6131348840,Anser anser,Anser,anser,19.895702,85.435388,2026-01-09T15:30,India,Odisha,"Central Division, Odisha, India",499.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+6131657512,Anser anser,Anser,anser,28.526218,77.488123,2026-01-24T23:11,India,Uttar Pradesh,"GFGQ+F6Q Surajpur Wetland, Surajpur, Greater Noida, Uttar Pradesh 201306, India",130.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+6133284384,Anser anser,Anser,anser,27.159225,77.519563,2026-01-24T11:08,India,Rajasthan,"Shreenagar Rural, Rajasthan, India",2290.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+6133446637,Anser anser,Anser,anser,27.166576,77.52269,2026-01-23T16:06,India,Rajasthan,"Shreenagar Rural, Rajasthan, India",1542.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+6133567666,Anser anser,Anser,anser,27.166576,77.52269,2026-01-23T17:12,India,Rajasthan,"Shreenagar Rural, Rajasthan, India",1542.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+6147222043,Anser anser,Anser,anser,28.527871,77.490171,2026-01-25T10:14,India,Uttar Pradesh,"Surajpur, Greater Noida, Uttar Pradesh, India",646.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+6147241079,Anser anser,Anser,anser,22.817895,72.045339,2026-01-26T14:29,India,Gujarat,"Bagodara Nalsarovar Link Rd, Nalsarovar, Gujarat 382110, India",203.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+6147557767,Anser anser,Anser,anser,28.527871,77.490171,2026-01-25T10:29,India,Uttar Pradesh,"Surajpur, Greater Noida, Uttar Pradesh, India",646.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+6159395876,Anser anser,Anser,anser,22.823565,72.03234,2026-01-26T11:16,India,Gujarat,"Gujarat, India",15.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+6159425185,Anser anser,Anser,anser,27.575631,95.395264,2026-01-30T10:54,India,Assam,"Maguri Bill, Assam 786147",3390.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+6159645374,Anser anser,Anser,anser,27.575631,95.395264,2026-01-30T10:48,India,Assam,"Maguri Bill, Assam 786147",3390.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+6159650472,Anser anser,Anser,anser,27.575631,95.395264,2026-01-30T10:47,India,Assam,"Maguri Bill, Assam 786147",3390.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+6235727786,Anser anser,Anser,anser,27.159225,77.519563,2026-01-24T15:55,India,Rajasthan,"Shreenagar Rural, Rajasthan, India",2290.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+6235729890,Anser anser,Anser,anser,21.557941,69.741363,2026-01-31T15:15:37,India,Gujarat,"Tukda Gosa, Gujarat 360576, India",811.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+6243797307,Anser anser,Anser,anser,26.1177,91.6494,2026-01-09,India,Jammu and Kashmir,"Near Deepor Beel,Guwahati, Kamrup, Assam",,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+6147451401,Anser anser,Anser,anser,27.188978,77.511422,2026-02-08T08:59,India,Rajasthan,"Shreenagar Rural, Rajasthan, India",6.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+6159156921,Anser anser,Anser,anser,27.575631,95.395264,2026-02-05T16:01,India,Assam,"Maguri Bill, Assam 786147",3390.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+6159165191,Anser anser,Anser,anser,21.783192,72.107649,2026-02-13T09:06:03,India,Gujarat,"Bhavnagar City, Bhavnagar, Gujarat, IN",1282.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+6159289879,Anser anser,Anser,anser,23.206105,71.744174,2026-02-11T07:26,India,Gujarat,"Gujarat, India",488.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+6159308624,Anser anser,Anser,anser,27.575631,95.395264,2026-02-05T16:14,India,Assam,"Maguri Bill, Assam 786147",3390.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+6159422943,Anser anser,Anser,anser,27.575631,95.395264,2026-02-04T12:55,India,Assam,"Maguri Bill, Assam 786147",3390.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+6159589985,Anser anser,Anser,anser,21.782814,72.108466,2026-02-13T08:39:44,India,Gujarat,"Bhavnagar City, Bhavnagar, Gujarat, IN",993.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+6163018645,Anser anser,Anser,anser,23.139656,71.763036,2026-02-11T15:58,India,Gujarat,"Gujarat, India",2.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+6163090079,Anser anser,Anser,anser,23.135865,72.401563,2026-02-05T10:18,India,Gujarat,"Gujarat, India",377.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+6170822816,Anser anser,Anser,anser,24.061761,72.957129,2026-02-22T10:15,India,Gujarat,"Gadhda Lake, Gujarat",379.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+6171234254,Anser anser,Anser,anser,27.191831,77.500183,2026-02-07T19:47,India,Rajasthan,"Shreenagar Rural, Rajasthan, India",924.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+6179231571,Anser anser,Anser,anser,27.159609,77.521813,2026-02-18T09:45,India,Rajasthan,"Keoladeo National Park, Bharatpur, Rajasthan 321001, India",6229.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+6179411078,Anser anser,Anser,anser,22.892713,72.067108,2026-02-09T08:45,India,Gujarat,"Gujarat, India",1591.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+6185755164,Anser anser,Anser,anser,21.574227,69.764411,2026-02-01T12:09:12,India,Gujarat,"Ratanpar, Gujarat 360576, India",,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+6441974837,Anser anser,Anser,anser,25.693546,77.331358,2026-02-21T10:08,India,Madhya Pradesh,"Beharda, Madhya Pradesh, India",20325.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+6195979619,Anser anser,Anser,anser,26.306988,91.083449,2026-04-12T09:07,India,Assam,"834M+PP6, Bishnupur, Bhella, Assam 781309, India",31.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+6399195124,Anser anser,Anser,anser,24.161588,88.273445,2026-06-11T09:57:47,India,West Bengal,"576F+M89, Lalbagh, Murshidabad, West Bengal 742149, India",6.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+5036693188,Anser anser,Anser,anser,25.197265,75.789807,2025-01-14T09:21:07,India,Rajasthan,"5QXR+X6V, Kota, Rajasthan 323021, India",,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+5037044962,Anser anser,Anser,anser,28.338742,77.619216,2025-01-13T17:07:55,India,Uttar Pradesh,"Thasrana, Uttar Pradesh, India",459.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+5037171857,Anser anser,Anser,anser,28.463389,76.891513,2025-01-11T08:21,India,Haryana,"Sultanpur National Park, Gurugram, Haryana, India",404.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+5037198204,Anser anser,Anser,anser,28.338742,77.619216,2025-01-13T17:04:10,India,Uttar Pradesh,"Thasrana, Uttar Pradesh, India",459.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+5051495559,Anser anser,Anser,anser,27.170889,77.518509,2025-01-11,India,Rajasthan,Bharatpur - Keoladeo Ghana NP,3.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+5074736824,Anser anser,Anser,anser,26.62639,93.360417,2025-01-19,India,Assam,Assam,47.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+5087515138,Anser anser,Anser,anser,26.6536,93.3602,2025-01-19T15:03,India,Assam,"Upper Assam Division, Assam, India",,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+5087568961,Anser anser,Anser,anser,27.167913,77.520349,2025-01-16T08:50:26,India,Rajasthan,"Bharatpur, Rajasthan, IN",3450.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+5087797895,Anser anser,Anser,anser,27.170157,77.518775,2025-01-16T10:05:37,India,Rajasthan,"Jungle Road, Bharatpur, Rajasthan, IN",5103.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+5890404478,Anser anser,Anser,anser,22.820947,72.057186,2025-01-26T12:00,India,Gujarat,"R3C4+9VF, Nalsarovar, Vekariya, Gujarat 382170, India",1487.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+5061460910,Anser anser,Anser,anser,27.187739,77.512018,2025-02-03,India,Rajasthan,Bharatpur - Keoladeo Ghana NP,25.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+5064088309,Anser anser,Anser,anser,26.204426,73.459245,2025-02-08T10:54:52,India,Rajasthan,"Olvi, Rajasthan 342605, India",4302.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+5074778584,Anser anser,Anser,anser,27.17288,77.521149,2025-02-18,India,Rajasthan,Bharatpur - Keoladeo Ghana NP,2.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+5074796392,Anser anser,Anser,anser,27.174229,77.52034,2025-02-18,India,Rajasthan,Bharatpur - Keoladeo Ghana NP,4.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+5086518163,Anser anser,Anser,anser,27.170652,77.517288,2025-02-23,India,Rajasthan,Bharatpur - Keoladeo Ghana NP,3.0,HUMAN_OBSERVATION,Hokersar Wetland Reserve,Greylag Goose
+5938260808,Anas platyrhynchos,Anas,platyrhynchos,30.286632,77.973494,2026-01-02T09:58:39,India,Uttarakhand,"7XPF+FMX, Chandrabani, Mehu Wala Mafi, Uttarakhand 248002, India",,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6130096420,Anas platyrhynchos,Anas,platyrhynchos,19.298225,72.907253,2026-01-10T10:36:18,India,Maharashtra,"Sasunavghar, Maharashtra 401208, India",,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6130116482,Anas platyrhynchos,Anas,platyrhynchos,28.530907,77.180149,2026-01-11T10:08:01,India,NCT of Delhi,"G5JJ+GCM, Qila Rai Pithora, New Delhi, Delhi 110030, India",1537.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6130609467,Anas platyrhynchos,Anas,platyrhynchos,30.285589,77.974739,2026-01-15T14:39:33,India,Uttarakhand,"7XPF+4Q5, Chandrabani, Mehu Wala Mafi, Uttarakhand 248002, India",,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6130629311,Anas platyrhynchos,Anas,platyrhynchos,23.920928,88.098096,2026-01-10T14:14:34,India,West Bengal,"W3CX+969, Sehalai, West Bengal 742301, India",687.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6130666463,Anas platyrhynchos,Anas,platyrhynchos,28.4646,80.776861,2026-01-13T12:56,India,Uttar Pradesh,"Sonaripur, Uttar Pradesh, India",12524.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6130821513,Anas platyrhynchos,Anas,platyrhynchos,28.461256,76.890369,2026-01-05,India,Haryana,"Sultanpur, Gurugram, Haryana, India",797.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6130828127,Anas platyrhynchos,Anas,platyrhynchos,28.553165,77.192853,2026-01-11T14:00,India,NCT of Delhi,"Hauz Khas District Park, Africa Avenue, Hauz Khas, Deer Park, Hauz Khas, New Delhi, Delhi 110016, India",212.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6130972046,Anas platyrhynchos,Anas,platyrhynchos,28.461256,76.890369,2026-01-05,India,Haryana,"Sultanpur, Gurugram, Haryana, India",797.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6131030623,Anas platyrhynchos,Anas,platyrhynchos,19.062707,73.063149,2026-01-09T10:37:36,India,Maharashtra,"3377+7H9 ACTREC TMC, Owe Camp, Kharghar, Navi Mumbai, Maharashtra 410210, India",9.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6131235091,Anas platyrhynchos,Anas,platyrhynchos,12.872367,77.615227,2026-01-02T17:54:51,India,Karnataka,"Akshayanagara West, Akshaya Vana, Akshayanagar, Bengaluru, Karnataka 560114, India",,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6131284141,Anas platyrhynchos,Anas,platyrhynchos,9.765493,76.29251,2026-01-16T09:51,India,Kerala,"Thuravoor Thekku, Kerala, India",4.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6131519335,Anas platyrhynchos,Anas,platyrhynchos,28.554952,77.19165,2026-01-04T16:49:49,India,NCT of Delhi,"Hauz Khas District Park, Africa Avenue, Hauz Khas, Deer Park, Hauz Khas, New Delhi, Delhi 110016, India",1144.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6159297535,Anas platyrhynchos,Anas,platyrhynchos,26.525051,92.991953,2026-01-29T09:33:01,India,Assam,"GXFV+W66, Lukhurakhania gaon, Kaziranga National Park, Assam 782136, India",1436.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6179132984,Anas platyrhynchos,Anas,platyrhynchos,12.679033,77.926772,2026-01-10T10:10:16,India,Tamil Nadu,"MWHG+QPQ, Tamil Nadu 635130, India",,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6185450202,Anas platyrhynchos,Anas,platyrhynchos,34.100218,74.876315,2026-01-30T17:00:57,India,Jammu and Kashmir,"Boulevard Road, Srinagar",1598.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6147396108,Anas platyrhynchos,Anas,platyrhynchos,32.542687,74.693062,2026-02-06T13:40:27,India,Jammu and Kashmir,"GMVV+429, Bhadyal Qazian, 181102",192.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6147495624,Anas platyrhynchos,Anas,platyrhynchos,32.541466,74.691652,2026-02-06T13:40:27,India,Jammu and Kashmir,"GMRR+J9M, Jammu, 181102",,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6147626381,Anas platyrhynchos,Anas,platyrhynchos,30.286129,77.974196,2026-02-04T16:27,India,Uttarakhand,"Chandrabani, Dehradun, Uttarakhand, India",366.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6147674756,Anas platyrhynchos,Anas,platyrhynchos,27.215186,77.503,2026-02-06T18:59,India,Rajasthan,"Bharatpur, Rajasthan, India",5032.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6159345451,Anas platyrhynchos,Anas,platyrhynchos,10.06799,76.340244,2026-02-14T10:32:08,India,Kerala,"389Q+CRM, Kochi, Kerala 683106, India",,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6159380466,Anas platyrhynchos,Anas,platyrhynchos,10.066065,76.334317,2026-02-14T10:45:44,India,Kerala,"CRA-26, Chaithanya Nagar, North Kalamassery, Kalamassery, Kochi, Kerala 683503, India",,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6159442447,Anas platyrhynchos,Anas,platyrhynchos,23.2818,71.634907,2026-02-12T16:20,India,Gujarat,"Gujarat, India",244.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6162820347,Anas platyrhynchos,Anas,platyrhynchos,23.679834,87.67355,2026-02-18T12:45:22,India,West Bengal,"Santiniketan, West Bengal, India",5.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6162870553,Anas platyrhynchos,Anas,platyrhynchos,23.67979,87.673503,2026-02-18T12:44:18,India,West Bengal,"Santiniketan, West Bengal, India",3.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6163234595,Anas platyrhynchos,Anas,platyrhynchos,23.223427,71.756399,2026-02-12T16:13,India,Gujarat,"Gujarat, India",4.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6163299005,Anas platyrhynchos,Anas,platyrhynchos,23.680059,87.675162,2026-02-22T16:20:29,India,West Bengal,"Santiniketan, West Bengal, India",,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6170819311,Anas platyrhynchos,Anas,platyrhynchos,28.595314,77.222261,2026-02-22T12:39:11,India,NCT of Delhi,"Lodhi Estate, New Delhi, Delhi, IN",16.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6170862844,Anas platyrhynchos,Anas,platyrhynchos,27.174812,77.520093,2026-02-27T07:41:02,India,Rajasthan,"Keoloadev National Park Road, Bharatpur, Rajasthan, IN",51.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6171155011,Anas platyrhynchos,Anas,platyrhynchos,28.595678,77.2221,2026-02-22T12:38:56,India,NCT of Delhi,"New Delhi, Delhi, IN",18.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6178374018,Anas platyrhynchos,Anas,platyrhynchos,27.159609,77.521813,2026-02-18T09:20,India,Rajasthan,"Keoladeo National Park, Bharatpur, Rajasthan 321001, India",6229.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6178927404,Anas platyrhynchos,Anas,platyrhynchos,32.542687,74.693062,2026-02-06T13:40:01,India,Jammu and Kashmir,"GMVV+429, Bhadyal Qazian, 181102",193.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6179386124,Anas platyrhynchos,Anas,platyrhynchos,23.679716,87.674022,2026-02-18T12:43:07,India,West Bengal,"Santiniketan, West Bengal, India",13.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6179510546,Anas platyrhynchos,Anas,platyrhynchos,24.585426,73.712479,2026-02-07T15:18:51,India,Rajasthan,"HPP6+5XG, Ayad, Shakti Nagar, Udaipur, Rajasthan 313002, India",10818.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6195486722,Anas platyrhynchos,Anas,platyrhynchos,27.718925,91.725947,2026-02-27T15:31,India,Arunachal Pradesh,"Tawang, IN-AR, IN",361.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6234773446,Anas platyrhynchos,Anas,platyrhynchos,32.542687,74.693062,2026-02-06T13:40:02,India,Jammu and Kashmir,"GMVV+429, Bhadyal Qazian, 181102",193.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6441342989,Anas platyrhynchos,Anas,platyrhynchos,9.900645,76.412737,2026-02-06T12:53:02,India,Kerala,"Ernakulam, IN-KL, IN",15.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6179123429,Anas platyrhynchos,Anas,platyrhynchos,12.95463,77.552674,2026-03-09T14:07:08,India,Karnataka,Sankey tank Bangalore,12051.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6182628217,Anas platyrhynchos,Anas,platyrhynchos,26.616447,93.331306,2026-03-12,India,Assam,Assam,1.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6183750437,Anas platyrhynchos,Anas,platyrhynchos,26.617668,93.337776,2026-03-12,India,Assam,Assam,1.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6184764875,Anas platyrhynchos,Anas,platyrhynchos,30.610165,77.458365,2026-03-03T16:18:24,India,Himachal Pradesh,"JF64+685, Renuka Ji, Himachal Pradesh 173022, India",726.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6184928460,Anas platyrhynchos,Anas,platyrhynchos,30.610165,77.458365,2026-03-03T16:21:04,India,Himachal Pradesh,"JF64+685, Renuka Ji, Himachal Pradesh 173022, India",726.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6185204253,Anas platyrhynchos,Anas,platyrhynchos,30.610165,77.458365,2026-03-03T16:01:22,India,Himachal Pradesh,"JF64+685, Renuka Ji, Himachal Pradesh 173022, India",726.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6185270240,Anas platyrhynchos,Anas,platyrhynchos,11.769933,77.796842,2026-03-19T08:40:45,India,Tamil Nadu,"QQ9W+WHW, Madhayankuttai, Navappatti, Tamil Nadu 636452, India",,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6185412493,Anas platyrhynchos,Anas,platyrhynchos,30.610165,77.458365,2026-03-03T16:21:04,India,Himachal Pradesh,"JF64+685, Renuka Ji, Himachal Pradesh 173022, India",726.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6185423662,Anas platyrhynchos,Anas,platyrhynchos,27.495323,94.927537,2026-03-13T15:29:39,India,Assam,"Assam 786005, India",187.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6234599727,Anas platyrhynchos,Anas,platyrhynchos,11.769933,77.796842,2026-03-19T08:40:18,India,Tamil Nadu,"QQ9W+WHW, Madhayankuttai, Navappatti, Tamil Nadu 636452, India",,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6273726072,Anas platyrhynchos,Anas,platyrhynchos,18.475741,73.84243,2026-03-29T07:18:54,India,Maharashtra,"FRGV+6MR Taljai Sport Complex, Taljai Forest Area, Pune, Maharashtra 411043, India",5.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6188102332,Anas platyrhynchos,Anas,platyrhynchos,23.680656,87.67135,2026-04-01T10:50:45,India,West Bengal,"MMHC+XQ, Santiniketan, West Bengal 731236, India",,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+6188132620,Anas platyrhynchos,Anas,platyrhynchos,12.921111,80.250794,2026-04-02T10:51,India,Tamil Nadu,"Injambakkam, Chennai, Tamil Nadu, India",31.0,HUMAN_OBSERVATION,Hokersar / Wular Lake,Mallard
+5938036464,Ardea cinerea,Ardea,cinerea,12.874312,79.372389,2026-01-02,India,Tamil Nadu,"V9FC+PXC, Arcot - Kanchipuram Rd, Gudimallur, Tamil Nadu 632513, India",20.0,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+5938068774,Ardea cinerea,Ardea,cinerea,19.156861,72.9581,2026-01-01T11:04:42,India,Maharashtra,"3, Tata Colony, Airoli, Thane, Mumbai, Maharashtra 400081, India",,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+5938089121,Ardea cinerea,Ardea,cinerea,11.891788,77.771567,2026-01-01T17:26,India,Tamil Nadu,"VQRC+PJ8, Tamil Nadu 636303, India",206.0,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+5938102397,Ardea cinerea,Ardea,cinerea,13.789542,76.840669,2026-01-01T15:16:08,India,Karnataka,"Devarahalli, Karnataka 572139, India",,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+5938213424,Ardea cinerea,Ardea,cinerea,12.918313,77.680097,2026-01-04T07:39,India,Karnataka,"Saul Kere, Kaikondrahalli, Bengaluru, Karnataka",384.0,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+5938260944,Ardea cinerea,Ardea,cinerea,11.891788,77.771567,2026-01-03T17:21,India,Tamil Nadu,"VQRC+PJ8, Tamil Nadu 636303, India",206.0,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+5938346137,Ardea cinerea,Ardea,cinerea,19.141906,72.964628,2026-01-04T08:56,India,Maharashtra,"4XR7+QV6 Bird Watching Area, Bhandup West (BPS), Mulund East, Mumbai, Maharashtra 400042, India",214.0,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+5938402733,Ardea cinerea,Ardea,cinerea,12.782749,80.236628,2026-01-02T12:09,India,Tamil Nadu,"Kelambakkam backwaters, Thiruvidanthai, Tamil Nadu, India",699.0,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+5938439390,Ardea cinerea,Ardea,cinerea,19.138306,72.958717,2026-01-03T10:56:28,India,Maharashtra,"Mumbai Suburban, IN-MH, IN",,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+5938484331,Ardea cinerea,Ardea,cinerea,12.717904,80.212587,2026-01-02T08:41,India,Tamil Nadu,"Nemmeli, Tamil Nadu, India",1970.0,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+5938537481,Ardea cinerea,Ardea,cinerea,12.874312,79.372389,2026-01-02,India,Tamil Nadu,"V9FC+PXC, Arcot - Kanchipuram Rd, Gudimallur, Tamil Nadu 632513, India",20.0,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+5938589363,Ardea cinerea,Ardea,cinerea,19.141906,72.964628,2026-01-04T10:58,India,Maharashtra,"4XR7+QV6 Bird Watching Area, Bhandup West (BPS), Mulund East, Mumbai, Maharashtra 400042, India",214.0,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+5938690092,Ardea cinerea,Ardea,cinerea,19.015496,73.006286,2026-01-02T09:53,India,Maharashtra,Karave Wetlands,290.0,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6129827656,Ardea cinerea,Ardea,cinerea,22.317727,76.615386,2026-01-06T16:37,India,Madhya Pradesh,"Indore Division, Madhya Pradesh, India",244.0,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6129829882,Ardea cinerea,Ardea,cinerea,20.97937,75.559903,2026-01-01T11:33:39,India,Maharashtra,"Gat No.408,409 Plot No 20 Mehrun Lake, Nehru Nagar, Tambapura, Jalgaon, Maharashtra 425003, India",,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6129867526,Ardea cinerea,Ardea,cinerea,28.560621,77.309165,2026-01-07T12:03,India,Uttar Pradesh,"Okhla Bird Sanctuary, New Delhi, Delhi, India",1184.0,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6130052940,Ardea cinerea,Ardea,cinerea,18.644014,73.809517,2026-01-14T09:21:51,India,Maharashtra,"Ayukta Bungalow Pimpri, Telco Quality Aid Center, Pimpri Colony, Pimpri-Chinchwad, Maharashtra 411018, India",,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6130097324,Ardea cinerea,Ardea,cinerea,21.602366,72.070824,2026-01-11T16:38:14,India,Gujarat,"Khokhara Road, Bhavnagar, Gujarat, IN",618.0,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6130164512,Ardea cinerea,Ardea,cinerea,23.22004,77.367076,2026-01-25T10:54:34,India,Madhya Pradesh,"Lake Drive, Bhopal, Madhya Pradesh, IN",3.0,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6130171329,Ardea cinerea,Ardea,cinerea,19.898833,85.449718,2026-01-10T15:07,India,Odisha,"Khordha, Odisha, India",,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6130230198,Ardea cinerea,Ardea,cinerea,19.013656,73.010592,2026-01-19T10:02:34,India,Maharashtra,"Podar International School, Seawoods, Seawoods West, Karave Village, Sector 36, Seawoods, Navi Mumbai, Maharashtra 400706, India",,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6130290735,Ardea cinerea,Ardea,cinerea,10.064205,76.250869,2026-01-11T08:36,India,Kerala,"3772+M8Q, Paliyam Thuruthu Rd, Paliyamthuruthu Ward, Pizhala, Ernakulam, Kerala 682027, India",987.0,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6130294022,Ardea cinerea,Ardea,cinerea,13.076044,77.673668,2026-01-18T02:49,India,Karnataka,"Bengaluru, Karnataka, India",244.0,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6130315125,Ardea cinerea,Ardea,cinerea,18.287435,74.788228,2026-01-18T15:04,India,Maharashtra,"Pune Division, Maharashtra, India",2589.0,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6130333479,Ardea cinerea,Ardea,cinerea,18.287435,74.788228,2026-01-18T15:55,India,Maharashtra,"Pune Division, Maharashtra, India",2589.0,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6130365378,Ardea cinerea,Ardea,cinerea,10.010875,76.215773,2026-01-11T11:17,India,Kerala,"Puthuvype Beach, India",1292.0,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6130370694,Ardea cinerea,Ardea,cinerea,12.983316,77.496685,2026-01-18T08:48:10,India,Karnataka,"Karnataka, IN",31057.0,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6130378753,Ardea cinerea,Ardea,cinerea,12.855497,79.359665,2026-01-10,India,Tamil Nadu,Ladavaram Lake,20.0,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6130379586,Ardea cinerea,Ardea,cinerea,19.894777,85.443562,2026-01-09T14:30,India,Odisha,"Khordha, Odisha, India",,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6130399541,Ardea cinerea,Ardea,cinerea,19.899288,85.448085,2026-01-10T15:34,India,Odisha,"Khordha, Odisha, India",,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6130407103,Ardea cinerea,Ardea,cinerea,12.772718,77.876257,2026-01-18T09:26:47,India,Tamil Nadu,"Kelavarapalli Dam, Tamil Nadu 635109, India",,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6130450138,Ardea cinerea,Ardea,cinerea,25.409937,81.851457,2026-01-20T11:30:38,India,Uttar Pradesh,"Shuats pond Prayagraj, Uttar Pradesh 211008, India",132.0,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6130465297,Ardea cinerea,Ardea,cinerea,15.29364,73.909688,2026-01-07T12:21:56,India,Goa,"South Goa, Goa, IN",44.0,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6130578770,Ardea cinerea,Ardea,cinerea,15.359879,76.436826,2026-01-08T18:24:36,India,Karnataka,"Kampasagar, Karnataka 583234, India",175.0,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6130584682,Ardea cinerea,Ardea,cinerea,24.829989,76.271083,2026-01-18T11:20,India,Rajasthan,"R7JC+3GX, Barkheri, Rajasthan 325601, India",165607.0,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6130588565,Ardea cinerea,Ardea,cinerea,12.946692,77.585322,2026-01-11T15:00:36,India,Karnataka,"WHWP+Q94 Lotus Pond, Mavalli, Bengaluru, Karnataka 560004, India",,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6130660186,Ardea cinerea,Ardea,cinerea,17.231583,79.076607,2026-01-18T15:09,India,Telangana,"Telangana, India",222.0,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6130694230,Ardea cinerea,Ardea,cinerea,18.531973,73.814988,2026-01-18T08:07,India,Maharashtra,"Gokhalenagar, Pune, Maharashtra, India",15.0,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6130703420,Ardea cinerea,Ardea,cinerea,22.317727,76.615386,2026-01-05T20:58,India,Madhya Pradesh,"Indore Division, Madhya Pradesh, India",244.0,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6130741972,Ardea cinerea,Ardea,cinerea,12.183293,77.723447,2026-01-17T10:10:01,India,Tamil Nadu,"5PMF+G8, Biligundulu R.F., Tamil Nadu 635102, India",,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6130771952,Ardea cinerea,Ardea,cinerea,11.891788,77.771567,2026-01-15T16:18,India,Tamil Nadu,"VQRC+PJ8, Tamil Nadu 636303, India",206.0,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6130803734,Ardea cinerea,Ardea,cinerea,25.409937,81.851457,2026-01-20T11:36:36,India,Uttar Pradesh,"Shuats pond Prayagraj, Uttar Pradesh 211008, India",132.0,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6130804772,Ardea cinerea,Ardea,cinerea,19.15104,72.961931,2026-01-26T08:59,India,Maharashtra,Bhandup Pumping Station,939.0,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6130832310,Ardea cinerea,Ardea,cinerea,18.179179,74.607797,2026-01-17T09:18,India,Maharashtra,"Baramati, Maharashtra, India",5024.0,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6130838843,Ardea cinerea,Ardea,cinerea,25.413314,81.846528,2026-01-20T11:36:36,India,Uttar Pradesh,"Sam Higginbottom University of Agriculture, Technology and Sciences",244.0,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6130840969,Ardea cinerea,Ardea,cinerea,12.787446,77.836083,2026-01-18T07:57:19,India,Tamil Nadu,"Eluvapalli, Tamil Nadu, India",,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6130879989,Ardea cinerea,Ardea,cinerea,17.354353,78.451017,2026-01-17T13:43:14,India,Telangana,"Shabnam manzil, 19-2-81/23/55/A/16, Tadban, Kishan Bagh, Hyderabad, Telangana 500064, India",,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6130901303,Ardea cinerea,Ardea,cinerea,9.774673,76.294794,2026-01-16T17:34:34,India,Kerala,"Q7FV+XFV, Thuravoor Thekku, Kerala 688540, India",,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6130915877,Ardea cinerea,Ardea,cinerea,12.918313,77.680097,2026-01-15T08:58,India,Karnataka,"Saul Kere, Kaikondrahalli, Bengaluru, Karnataka",384.0,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
+6130947536,Ardea cinerea,Ardea,cinerea,18.534397,73.785292,2026-01-17T08:46:01,India,Maharashtra,Pashan Lake,576.0,HUMAN_OBSERVATION,Wular Lake Complex,Grey Heron
