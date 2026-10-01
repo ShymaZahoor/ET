@@ -1,6 +1,0 @@
-{
-  "name": "EcoTwin - AI Wildlife Monitoring & Early Warning Platform",
-  "description": "AI-powered wildlife monitoring and human-wildlife conflict prevention platform for camera detection, animal tracking, threat prediction, and ranger dispatch.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
