@@ -7,22 +7,35 @@ export const AppShell: React.FC = () => {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#07141F] text-slate-100 flex flex-col overflow-hidden">
+    <div className="h-screen w-full bg-[#07141F] text-slate-100 flex flex-col overflow-hidden">
+      
       {/* Top Header */}
-      <Header onToggleSidebar={() => setSidebarCollapsed(!sidebarCollapsed)} />
-
-      {/* Main App Body with Sidebar + Dynamic Viewport */}
-      <div className="flex-1 flex overflow-hidden">
-        {/* Persistent Collapsible Sidebar */}
-        <Sidebar
-          collapsed={sidebarCollapsed}
-          onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
+      <div className="shrink-0">
+        <Header
+          onToggleSidebar={() =>
+            setSidebarCollapsed(!sidebarCollapsed)
+          }
         />
+      </div>
 
-        {/* Dynamic Route Viewport with auto scrolling */}
-        <main className="flex-1 overflow-y-auto bg-[#07141F] p-4 lg:p-6 scrollbar-thin">
+      {/* Main Application Area */}
+      <div className="flex flex-1 min-h-0 overflow-hidden">
+        
+        {/* Fixed Sidebar */}
+        <div className="h-full shrink-0">
+          <Sidebar
+            collapsed={sidebarCollapsed}
+            onToggleCollapse={() =>
+              setSidebarCollapsed(!sidebarCollapsed)
+            }
+          />
+        </div>
+
+        {/* Main Content - ONLY THIS AREA SCROLLS */}
+        <main className="flex-1 min-w-0 min-h-0 overflow-y-auto overflow-x-hidden bg-[#07141F] p-4 lg:p-6 scrollbar-thin">
           <Outlet />
         </main>
+        
       </div>
     </div>
   );
