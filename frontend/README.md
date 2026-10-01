@@ -1,20 +1,21 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# VanDristi Frontend
 
-# Run and deploy your AI Studio app
+Frontend interface for **VanDristi**, an AI-powered wildlife monitoring platform.
 
-This contains everything you need to run your app locally.
+### Tech Stack
+- React + TypeScript
+- Vite
+- Tailwind CSS
+- React Router
+- Recharts
+- Leaflet
+- Lucide React
 
-View your app in AI Studio: https://ai.studio/apps/62216b55-90f5-47e7-b0b2-ff22bc0630ff
+### Run Locally
 
-## Run Locally
+```bash
+npm install
+npm run dev
+```
 
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+The frontend provides dashboards, wildlife monitoring, incident tracking, maps, analytics, alerts, and responder management interfaces.
