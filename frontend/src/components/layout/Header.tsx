@@ -14,7 +14,6 @@ import {
 import { Link, useNavigate } from 'react-router-dom';
 import { ecoTwinApi } from '../../services/api';
 import { NotificationItem } from '../../types';
-import { mockNotifications } from '../../data/mockData';
 
 interface HeaderProps {
   onToggleSidebar?: () => void;
@@ -25,7 +24,7 @@ export const Header: React.FC<HeaderProps> = ({ onToggleSidebar }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [currentTime, setCurrentTime] = useState('');
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
-  const [notifications, setNotifications] = useState<NotificationItem[]>(mockNotifications);
+  const [notifications, setNotifications] = useState<NotificationItem[]>([]);
   const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {

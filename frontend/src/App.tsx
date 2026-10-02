@@ -19,6 +19,7 @@ import { ReportsPage } from './pages/ReportsPage';
 import { AIDataPage } from './pages/AIDataPage';
 import { NotificationsPage } from './pages/NotificationsPage';
 import { SettingsPage } from './pages/SettingsPage';
+import { NotFoundPage } from './pages/NotFoundPage';
 
 export default function App() {
   return (
@@ -46,6 +47,7 @@ export default function App() {
           <Route path="ai-data" element={<AIDataPage />} />
           <Route path="notifications" element={<NotificationsPage />} />
           <Route path="settings" element={<SettingsPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
 
         {/* Catch-all fallback */}

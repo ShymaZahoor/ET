@@ -13,14 +13,13 @@ import {
 } from 'lucide-react';
 import { ecoTwinApi } from '../services/api';
 import { Incident } from '../types';
-import { mockIncidents } from '../data/mockData';
 import { RiskBadge } from '../components/common/RiskBadge';
 import { StatusBadge } from '../components/common/StatusBadge';
 import { DispatchModal } from '../components/common/DispatchModal';
 
 export const IncidentsPage: React.FC = () => {
   const navigate = useNavigate();
-  const [incidents, setIncidents] = useState<Incident[]>(mockIncidents);
+  const [incidents, setIncidents] = useState<Incident[]>([]);
   const [search, setSearch] = useState('');
   const [statusFilter, setStatusFilter] = useState('All');
   const [severityFilter, setSeverityFilter] = useState('All');

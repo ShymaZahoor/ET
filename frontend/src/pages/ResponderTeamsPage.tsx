@@ -13,12 +13,11 @@ import {
 } from 'lucide-react';
 import { ecoTwinApi } from '../services/api';
 import { ResponderTeam } from '../types';
-import { mockResponderTeams } from '../data/mockData';
 import { StatusBadge } from '../components/common/StatusBadge';
 import { DispatchModal } from '../components/common/DispatchModal';
 
 export const ResponderTeamsPage: React.FC = () => {
-  const [teams, setTeams] = useState<ResponderTeam[]>(mockResponderTeams);
+  const [teams, setTeams] = useState<ResponderTeam[]>([]);
   const [search, setSearch] = useState('');
   const [regionFilter, setRegionFilter] = useState('All');
   const [statusFilter, setStatusFilter] = useState('All');

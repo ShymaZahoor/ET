@@ -18,7 +18,6 @@ import {
 } from 'lucide-react';
 import { ecoTwinApi } from '../services/api';
 import { Incident, ResponderTeam } from '../types';
-import { mockIncidents } from '../data/mockData';
 import { RiskBadge } from '../components/common/RiskBadge';
 import { StatusBadge } from '../components/common/StatusBadge';
 import { DispatchModal } from '../components/common/DispatchModal';
@@ -27,9 +26,7 @@ import { EcoTwinMap } from '../components/map/EcoTwinMap';
 export const IncidentDetailsPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const [incident, setIncident] = useState<Incident | null>(() => {
-    return mockIncidents.find((i) => i.id === id) || mockIncidents[0];
-  });
+  const [incident, setIncident] = useState<Incident | null>(null);
   const [activeTab, setActiveTab] = useState<'timeline' | 'evidence' | 'location' | 'prediction' | 'response'>('timeline');
   const [isDispatchOpen, setIsDispatchOpen] = useState(false);
   const [toastMsg, setToastMsg] = useState<string | null>(null);
