@@ -26,7 +26,8 @@ class Settings(BaseSettings):
         "http://localhost:3000",
         "http://127.0.0.1:3000",
         "http://localhost:5173",
-        "http://172.16.22.108:3000"
+        "http://172.16.22.108:3000",
+        "http://192.168.192.1:3000"
     ]
 
     # --- Digital Twin Simulation ---

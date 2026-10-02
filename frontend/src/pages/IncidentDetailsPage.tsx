@@ -21,7 +21,7 @@ import { Incident, ResponderTeam } from '../types';
 import { RiskBadge } from '../components/common/RiskBadge';
 import { StatusBadge } from '../components/common/StatusBadge';
 import { DispatchModal } from '../components/common/DispatchModal';
-import { EcoTwinMap } from '../components/map/EcoTwinMap';
+import { EcoTwinMap } from '../components/map/VandristiMap';
 
 export const IncidentDetailsPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();

@@ -12,19 +12,63 @@ import {
 } from '../types';
 
 const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api/v1';
+  import.meta.env.VITE_API_BASE_URL ||
+  'http://localhost:8000/api/v1';
+
+/*
+ * ============================================================
+ * Global API Request Handler
+ * ============================================================
+ *
+ * API error behavior:
+ *
+ * 400 / 401 / 403 / 404 / 409 / 422 / 500 / etc.
+ *      -> redirect to /error?status=<status>
+ *
+ * Backend unavailable / network failure
+ *      -> redirect to /error?status=network
+ *
+ * Individual functions can still catch specific 404s
+ * when a missing resource is an expected condition.
+ */
 
 async function request<T>(
   endpoint: string,
   options: RequestInit = {}
 ): Promise<T> {
-  const response = await fetch(`${API_BASE_URL}${endpoint}`, {
-    headers: {
-      'Content-Type': 'application/json',
-      ...(options.headers || {}),
-    },
-    ...options,
-  });
+  let response: Response;
+
+  try {
+    response = await fetch(`${API_BASE_URL}${endpoint}`, {
+      ...options,
+      headers: {
+        'Content-Type': 'application/json',
+        ...(options.headers || {}),
+      },
+    });
+  } catch (error) {
+    /*
+     * Fetch failed completely.
+     *
+     * This normally means:
+     * - Backend is offline
+     * - Network connection failed
+     * - Wrong API URL
+     * - CORS/network-level failure
+     */
+
+    if (window.location.pathname !== '/error') {
+      window.location.href = '/error?status=network';
+    }
+
+    throw error;
+  }
+
+  /*
+   * ==========================================================
+   * HTTP ERROR
+   * ==========================================================
+   */
 
   if (!response.ok) {
     let message = `API request failed: ${response.status} ${response.statusText}`;
@@ -42,18 +86,47 @@ async function request<T>(
       // Ignore JSON parsing errors
     }
 
+    /*
+     * Redirect the application to the global system error page.
+     *
+     * Example:
+     *
+     * 400 -> /error?status=400
+     * 404 -> /error?status=404
+     * 500 -> /error?status=500
+     */
+
+    if (window.location.pathname !== '/error') {
+      window.location.href = `/error?status=${response.status}`;
+    }
+
     throw new Error(message);
   }
+
+  /*
+   * ==========================================================
+   * NO CONTENT
+   * ==========================================================
+   */
 
   if (response.status === 204) {
     return undefined as T;
   }
 
+  /*
+   * ==========================================================
+   * SUCCESS
+   * ==========================================================
+   */
+
   return response.json();
 }
 
+
 /*
+ * ============================================================
  * Vandristi API
+ * ============================================================
  *
  * Frontend:
  *   http://localhost:3000
@@ -63,8 +136,12 @@ async function request<T>(
  *
  * API:
  *   http://localhost:8000/api/v1
+ *
+ * ============================================================
  */
+
 export const vanDristiApi = {
+
   // ============================================================
   // Animals & Tracking
   // ============================================================
@@ -73,17 +150,33 @@ export const vanDristiApi = {
     return request<Animal[]>('/animals');
   },
 
-  async getAnimalById(id: string): Promise<Animal | undefined> {
+  async getAnimalById(
+    id: string
+  ): Promise<Animal | undefined> {
+
     try {
-      return await request<Animal>(`/animals/${encodeURIComponent(id)}`);
+      return await request<Animal>(
+        `/animals/${encodeURIComponent(id)}`
+      );
+
     } catch (error) {
-      if (error instanceof Error && error.message.includes('404')) {
+
+      /*
+       * A missing individual animal is treated as a normal
+       * "not found" condition for this function.
+       */
+
+      if (
+        error instanceof Error &&
+        error.message.includes('404')
+      ) {
         return undefined;
       }
 
       throw error;
     }
   },
+
 
   // ============================================================
   // Cameras & Live Detection
@@ -97,6 +190,7 @@ export const vanDristiApi = {
     return request<Detection[]>('/detections');
   },
 
+
   // ============================================================
   // Active Threats
   // ============================================================
@@ -108,18 +202,26 @@ export const vanDristiApi = {
   async getThreatByTrackId(
     trackId: string
   ): Promise<Threat | undefined> {
+
     try {
+
       return await request<Threat>(
         `/threats/track/${encodeURIComponent(trackId)}`
       );
+
     } catch (error) {
-      if (error instanceof Error && error.message.includes('404')) {
+
+      if (
+        error instanceof Error &&
+        error.message.includes('404')
+      ) {
         return undefined;
       }
 
       throw error;
     }
   },
+
 
   // ============================================================
   // Incidents
@@ -132,12 +234,19 @@ export const vanDristiApi = {
   async getIncidentById(
     id: string
   ): Promise<Incident | undefined> {
+
     try {
+
       return await request<Incident>(
         `/incidents/${encodeURIComponent(id)}`
       );
+
     } catch (error) {
-      if (error instanceof Error && error.message.includes('404')) {
+
+      if (
+        error instanceof Error &&
+        error.message.includes('404')
+      ) {
         return undefined;
       }
 
@@ -149,10 +258,12 @@ export const vanDristiApi = {
     incidentId: string,
     teamId: string
   ): Promise<Incident> {
+
     return request<Incident>(
       `/incidents/${encodeURIComponent(incidentId)}/assign-team`,
       {
         method: 'POST',
+
         body: JSON.stringify({
           team_id: teamId,
         }),
@@ -164,10 +275,12 @@ export const vanDristiApi = {
     incidentId: string,
     newStatus: Incident['status']
   ): Promise<Incident> {
+
     return request<Incident>(
       `/incidents/${encodeURIComponent(incidentId)}/status`,
       {
         method: 'PATCH',
+
         body: JSON.stringify({
           status: newStatus,
         }),
@@ -175,28 +288,34 @@ export const vanDristiApi = {
     );
   },
 
+
   // ============================================================
   // Responder Teams
   // ============================================================
 
   async getResponderTeams(): Promise<ResponderTeam[]> {
-    return request<ResponderTeam[]>('/responder-teams');
+    return request<ResponderTeam[]>(
+      '/responder-teams'
+    );
   },
 
   async dispatchTeam(
     teamId: string,
     targetLocation: string
   ): Promise<ResponderTeam> {
+
     return request<ResponderTeam>(
       `/responder-teams/${encodeURIComponent(teamId)}/dispatch`,
       {
         method: 'POST',
+
         body: JSON.stringify({
           target_location: targetLocation,
         }),
       }
     );
   },
+
 
   // ============================================================
   // Predictive Intelligence
@@ -209,13 +328,19 @@ export const vanDristiApi = {
   async runNewPrediction(
     trackId: string
   ): Promise<Prediction> {
-    return request<Prediction>('/predictions/run', {
-      method: 'POST',
-      body: JSON.stringify({
-        track_id: trackId,
-      }),
-    });
+
+    return request<Prediction>(
+      '/predictions/run',
+      {
+        method: 'POST',
+
+        body: JSON.stringify({
+          track_id: trackId,
+        }),
+      }
+    );
   },
+
 
   // ============================================================
   // Habitat & Environment
@@ -225,6 +350,7 @@ export const vanDristiApi = {
     return request<HabitatData>('/habitat');
   },
 
+
   // ============================================================
   // AI & Data Models
   // ============================================================
@@ -233,6 +359,7 @@ export const vanDristiApi = {
     return request<AIModelStatus>('/ai-status');
   },
 
+
   // ============================================================
   // Analytics & Reports
   // ============================================================
@@ -240,22 +367,30 @@ export const vanDristiApi = {
   async getAnalyticsData(
     timeRange: string = 'Last 24 Hours'
   ) {
-    const encodedRange = encodeURIComponent(timeRange);
+
+    const encodedRange =
+      encodeURIComponent(timeRange);
 
     return request(
       `/analytics?time_range=${encodedRange}`
     );
   },
 
+
   // ============================================================
   // Notifications
   // ============================================================
 
   async getNotifications(): Promise<NotificationItem[]> {
-    return request<NotificationItem[]>('/notifications');
+    return request<NotificationItem[]>(
+      '/notifications'
+    );
   },
 
-  async markNotificationRead(id: string): Promise<void> {
+  async markNotificationRead(
+    id: string
+  ): Promise<void> {
+
     await request<void>(
       `/notifications/${encodeURIComponent(id)}/read`,
       {
@@ -265,16 +400,27 @@ export const vanDristiApi = {
   },
 
   async markAllNotificationsRead(): Promise<void> {
-    await request<void>('/notifications/read-all', {
-      method: 'PATCH',
-    });
+
+    await request<void>(
+      '/notifications/read-all',
+      {
+        method: 'PATCH',
+      }
+    );
   },
 };
 
-// Backward compatibility.
+
+// ============================================================
+// Backward Compatibility
+// ============================================================
 //
-// Some existing frontend components may still import:
+// Existing components may still import:
+//
 //   ecoTwinApi
 //
-// We don't need to rewrite those components immediately.
+// So we keep the old name.
+//
+// ============================================================
+
 export const ecoTwinApi = vanDristiApi;

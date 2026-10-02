@@ -1,6 +1,6 @@
 import React from 'react';
 import { MapPin, Navigation, Info } from 'lucide-react';
-import { EcoTwinMap } from '../components/map/EcoTwinMap';
+import { EcoTwinMap } from '../components/map/VandristiMap';
 
 export const MapPage: React.FC = () => {
   return (

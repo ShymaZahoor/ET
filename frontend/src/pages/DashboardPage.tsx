@@ -24,7 +24,7 @@ import { RiskBadge } from '../components/common/RiskBadge';
 
 import { StatusBadge } from '../components/common/StatusBadge';
 
-import { EcoTwinMap } from '../components/map/EcoTwinMap';
+import { EcoTwinMap } from '../components/map/VandristiMap';
 
 import { DispatchModal } from '../components/common/DispatchModal';
 

@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 import { ecoTwinApi } from '../services/api';
 import { Prediction } from '../types';
-import { EcoTwinMap } from '../components/map/EcoTwinMap';
+import { EcoTwinMap } from '../components/map/VandristiMap';
 
 export const PredictiveIntelligencePage: React.FC = () => {
   const [prediction, setPrediction] = useState<Prediction | null>(null);
