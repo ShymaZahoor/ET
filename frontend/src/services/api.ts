@@ -10,185 +10,271 @@ import {
   AIModelStatus,
   NotificationItem,
 } from '../types';
-import {
-  mockAnimals,
-  mockCameras,
-  mockDetections,
-  mockThreats,
-  mockIncidents,
-  mockResponderTeams,
-  mockPrediction,
-  mockHabitat,
-  mockAIStatus,
-  mockNotifications,
-  mockAnalytics,
-} from '../data/mockData';
 
-// In-memory mutable copies to simulate realistic REST/WebSocket updates in the browser
-let mutableIncidents: Incident[] = [...mockIncidents];
-let mutableTeams: ResponderTeam[] = [...mockResponderTeams];
-let mutableNotifications: NotificationItem[] = [...mockNotifications];
-let mutableAnimals: Animal[] = [...mockAnimals];
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api/v1';
 
-export const ecoTwinApi = {
+async function request<T>(
+  endpoint: string,
+  options: RequestInit = {}
+): Promise<T> {
+  const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      ...(options.headers || {}),
+    },
+    ...options,
+  });
+
+  if (!response.ok) {
+    let message = `API request failed: ${response.status} ${response.statusText}`;
+
+    try {
+      const errorData = await response.json();
+
+      if (errorData?.detail) {
+        message =
+          typeof errorData.detail === 'string'
+            ? errorData.detail
+            : JSON.stringify(errorData.detail);
+      }
+    } catch {
+      // Ignore JSON parsing errors
+    }
+
+    throw new Error(message);
+  }
+
+  if (response.status === 204) {
+    return undefined as T;
+  }
+
+  return response.json();
+}
+
+/*
+ * Vandristi API
+ *
+ * Frontend:
+ *   http://localhost:3000
+ *
+ * Backend:
+ *   http://localhost:8000
+ *
+ * API:
+ *   http://localhost:8000/api/v1
+ */
+export const vanDristiApi = {
+  // ============================================================
   // Animals & Tracking
+  // ============================================================
+
   async getAnimals(): Promise<Animal[]> {
-    return Promise.resolve([...mutableAnimals]);
+    return request<Animal[]>('/animals');
   },
 
   async getAnimalById(id: string): Promise<Animal | undefined> {
-    return Promise.resolve(mutableAnimals.find((a) => a.id === id || a.trackId === id));
+    try {
+      return await request<Animal>(`/animals/${encodeURIComponent(id)}`);
+    } catch (error) {
+      if (error instanceof Error && error.message.includes('404')) {
+        return undefined;
+      }
+
+      throw error;
+    }
   },
 
+  // ============================================================
   // Cameras & Live Detection
+  // ============================================================
+
   async getCameras(): Promise<Camera[]> {
-    return Promise.resolve([...mockCameras]);
+    return request<Camera[]>('/cameras');
   },
 
   async getDetections(): Promise<Detection[]> {
-    return Promise.resolve([...mockDetections]);
+    return request<Detection[]>('/detections');
   },
 
+  // ============================================================
   // Active Threats
+  // ============================================================
+
   async getThreats(): Promise<Threat[]> {
-    return Promise.resolve([...mockThreats]);
+    return request<Threat[]>('/threats');
   },
 
-  async getThreatByTrackId(trackId: string): Promise<Threat | undefined> {
-    return Promise.resolve(mockThreats.find((t) => t.trackId === trackId));
-  },
-
-  // Incidents
-  async getIncidents(): Promise<Incident[]> {
-    return Promise.resolve([...mutableIncidents]);
-  },
-
-  async getIncidentById(id: string): Promise<Incident | undefined> {
-    return Promise.resolve(mutableIncidents.find((inc) => inc.id === id));
-  },
-
-  async assignTeamToIncident(incidentId: string, teamId: string): Promise<Incident> {
-    const incidentIndex = mutableIncidents.findIndex((i) => i.id === incidentId);
-    const team = mutableTeams.find((t) => t.id === teamId);
-    if (incidentIndex !== -1 && team) {
-      mutableIncidents[incidentIndex] = {
-        ...mutableIncidents[incidentIndex],
-        assignedTeamId: team.id,
-        assignedTeamName: team.name,
-        status: 'Assigned',
-        timeline: [
-          ...mutableIncidents[incidentIndex].timeline,
-          {
-            time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-            text: `${team.name} assigned to coordinate response`,
-            badge: 'Assigned',
-            type: 'assigned',
-          },
-        ],
-      };
-      // Also update team status
-      const teamIdx = mutableTeams.findIndex((t) => t.id === teamId);
-      if (teamIdx !== -1) {
-        mutableTeams[teamIdx] = {
-          ...mutableTeams[teamIdx],
-          status: 'On Mission',
-          currentAssignment: `${incidentId} (${mutableIncidents[incidentIndex].location})`,
-        };
+  async getThreatByTrackId(
+    trackId: string
+  ): Promise<Threat | undefined> {
+    try {
+      return await request<Threat>(
+        `/threats/track/${encodeURIComponent(trackId)}`
+      );
+    } catch (error) {
+      if (error instanceof Error && error.message.includes('404')) {
+        return undefined;
       }
-      return Promise.resolve(mutableIncidents[incidentIndex]);
+
+      throw error;
     }
-    throw new Error('Incident or Team not found');
   },
 
-  async updateIncidentStatus(incidentId: string, newStatus: Incident['status']): Promise<Incident> {
-    const incidentIndex = mutableIncidents.findIndex((i) => i.id === incidentId);
-    if (incidentIndex !== -1) {
-      mutableIncidents[incidentIndex] = {
-        ...mutableIncidents[incidentIndex],
-        status: newStatus,
-        timeline: [
-          ...mutableIncidents[incidentIndex].timeline,
-          {
-            time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-            text: `Incident status updated to ${newStatus}`,
-            badge: newStatus,
-            type: newStatus === 'Resolved' ? 'resolved' : 'monitoring',
-          },
-        ],
-      };
-      return Promise.resolve(mutableIncidents[incidentIndex]);
-    }
-    throw new Error('Incident not found');
+  // ============================================================
+  // Incidents
+  // ============================================================
+
+  async getIncidents(): Promise<Incident[]> {
+    return request<Incident[]>('/incidents');
   },
 
+  async getIncidentById(
+    id: string
+  ): Promise<Incident | undefined> {
+    try {
+      return await request<Incident>(
+        `/incidents/${encodeURIComponent(id)}`
+      );
+    } catch (error) {
+      if (error instanceof Error && error.message.includes('404')) {
+        return undefined;
+      }
+
+      throw error;
+    }
+  },
+
+  async assignTeamToIncident(
+    incidentId: string,
+    teamId: string
+  ): Promise<Incident> {
+    return request<Incident>(
+      `/incidents/${encodeURIComponent(incidentId)}/assign-team`,
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          team_id: teamId,
+        }),
+      }
+    );
+  },
+
+  async updateIncidentStatus(
+    incidentId: string,
+    newStatus: Incident['status']
+  ): Promise<Incident> {
+    return request<Incident>(
+      `/incidents/${encodeURIComponent(incidentId)}/status`,
+      {
+        method: 'PATCH',
+        body: JSON.stringify({
+          status: newStatus,
+        }),
+      }
+    );
+  },
+
+  // ============================================================
   // Responder Teams
+  // ============================================================
+
   async getResponderTeams(): Promise<ResponderTeam[]> {
-    return Promise.resolve([...mutableTeams]);
+    return request<ResponderTeam[]>('/responder-teams');
   },
 
-  async dispatchTeam(teamId: string, targetLocation: string): Promise<ResponderTeam> {
-    const idx = mutableTeams.findIndex((t) => t.id === teamId);
-    if (idx !== -1) {
-      mutableTeams[idx] = {
-        ...mutableTeams[idx],
-        status: 'En Route',
-        currentAssignment: `Dispatched to ${targetLocation}`,
-      };
-      return Promise.resolve(mutableTeams[idx]);
-    }
-    throw new Error('Team not found');
+  async dispatchTeam(
+    teamId: string,
+    targetLocation: string
+  ): Promise<ResponderTeam> {
+    return request<ResponderTeam>(
+      `/responder-teams/${encodeURIComponent(teamId)}/dispatch`,
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          target_location: targetLocation,
+        }),
+      }
+    );
   },
 
+  // ============================================================
   // Predictive Intelligence
+  // ============================================================
+
   async getPredictions(): Promise<Prediction> {
-    return Promise.resolve({ ...mockPrediction });
+    return request<Prediction>('/predictions');
   },
 
-  async runNewPrediction(trackId: string): Promise<Prediction> {
-    // Simulate re-running LSTM trajectory inference
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve({
-          ...mockPrediction,
-          trackId,
-          predictionConfidence: 81,
-          entryProbability: 84,
-          etaToZone: '28 min',
-          riskScore: 81.2,
-        });
-      }, 700);
+  async runNewPrediction(
+    trackId: string
+  ): Promise<Prediction> {
+    return request<Prediction>('/predictions/run', {
+      method: 'POST',
+      body: JSON.stringify({
+        track_id: trackId,
+      }),
     });
   },
 
+  // ============================================================
   // Habitat & Environment
+  // ============================================================
+
   async getHabitatData(): Promise<HabitatData> {
-    return Promise.resolve({ ...mockHabitat });
+    return request<HabitatData>('/habitat');
   },
 
+  // ============================================================
   // AI & Data Models
+  // ============================================================
+
   async getModelStatus(): Promise<AIModelStatus> {
-    return Promise.resolve({ ...mockAIStatus });
+    return request<AIModelStatus>('/ai-status');
   },
 
+  // ============================================================
   // Analytics & Reports
-  async getAnalyticsData(timeRange: string = 'Last 24 Hours') {
-    return Promise.resolve({ ...mockAnalytics, timeRange });
+  // ============================================================
+
+  async getAnalyticsData(
+    timeRange: string = 'Last 24 Hours'
+  ) {
+    const encodedRange = encodeURIComponent(timeRange);
+
+    return request(
+      `/analytics?time_range=${encodedRange}`
+    );
   },
 
+  // ============================================================
   // Notifications
+  // ============================================================
+
   async getNotifications(): Promise<NotificationItem[]> {
-    return Promise.resolve([...mutableNotifications]);
+    return request<NotificationItem[]>('/notifications');
   },
 
   async markNotificationRead(id: string): Promise<void> {
-    mutableNotifications = mutableNotifications.map((n) => (n.id === id ? { ...n, read: true } : n));
-    return Promise.resolve();
+    await request<void>(
+      `/notifications/${encodeURIComponent(id)}/read`,
+      {
+        method: 'PATCH',
+      }
+    );
   },
 
   async markAllNotificationsRead(): Promise<void> {
-    mutableNotifications = mutableNotifications.map((n) => ({ ...n, read: true }));
-    return Promise.resolve();
+    await request<void>('/notifications/read-all', {
+      method: 'PATCH',
+    });
   },
 };
 
-export const vanDristiApi = ecoTwinApi;
+// Backward compatibility.
+//
+// Some existing frontend components may still import:
+//   ecoTwinApi
+//
+// We don't need to rewrite those components immediately.
+export const ecoTwinApi = vanDristiApi;

@@ -1,0 +1,43 @@
+# PostgreSQL + PostGIS for local development.
+#
+# Usage:
+#   cd database
+#   docker compose up -d
+#
+# Then from backend/:
+#   python -m app.seed.seed_data      # creates tables + seed data
+#   uvicorn app.main:app --reload
+
+version: "3.9"
+
+services:
+  postgres:
+    image: postgis/postgis:16-3.4
+    container_name: ecotwin-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ecotwin
+      POSTGRES_PASSWORD: ecotwin
+      POSTGRES_DB: ecotwin
+    ports:
+      - "5433:5432"
+    volumes:
+      - ecotwin_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ecotwin -d ecotwin"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # Optional: lightweight DB admin UI at http://localhost:8081
+  adminer:
+    image: adminer:latest
+    container_name: ecotwin-adminer
+    restart: unless-stopped
+    ports:
+      - "8081:8080"
+    depends_on:
+      - postgres
+
+volumes:
+  ecotwin_pgdata:
