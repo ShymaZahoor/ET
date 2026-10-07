@@ -15,6 +15,7 @@ Frontend interface for **VanDristi**, an AI-powered wildlife monitoring platform
 
 ```bash
 npm install
+npm run build
 npm run dev
 ```
 
